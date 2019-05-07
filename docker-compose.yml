@@ -44,16 +44,16 @@ services:
         depends_on:
           - elasticsearch
           
-  heartbeat:
-    image: docker.elastic.co/beats/heartbeat:7.0.1
-    command: --strict.perms=false
-    environment:
-      - setup.kibana.host=kibana:5601
-      - output.elasticsearch.hosts=["elasticsearch:9200"]
+    #  heartbeat:
+    #    image: docker.elastic.co/beats/heartbeat:7.0.1
+     #   command: --strict.perms=false
+     #   environment:
+    #      - setup.kibana.host=kibana:5601
+    #      - output.elasticsearch.hosts=["elasticsearch:9200"]
     # volumes:
     #   - ${PWD}/heartbeat.yml:/usr/share/heartbeat/heartbeat.yml
-    networks:
-      - elasticnet
+    #     networks:
+    #       - elasticnet
 
 networks:
   elasticnet:
