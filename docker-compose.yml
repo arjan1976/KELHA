@@ -12,8 +12,8 @@ services:
         networks:
             - apm
         depends_on:
-          - elasticsearch
-          - kibana
+            - elasticsearch
+            - kibana
     elasticsearch:
         image: docker.elastic.co/elasticsearch/elasticsearch:7.0.1
         # network_mode: "service:elasticsearch"
@@ -33,14 +33,14 @@ services:
         # volumes:
         #     - ./kibana.yml:/usr/share/kibana/config/kibana.yml
         ports:
-          - "5601:5601"
+            - "5601:5601"
         networks:
             - apm
         environment:
             - ELASTICSEARCH_URL=http://elasticsearch:9200
         depends_on:
-          - elasticsearch
+            - elasticsearch
 
  networks:
-  apm:
-    driver: bridge
+    apm:
+        driver: bridge
