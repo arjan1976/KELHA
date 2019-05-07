@@ -10,7 +10,7 @@ services:
         # volumes:
         #    - ./apm-server.yml:/usr/share/apm-server/apm-server.yml
         networks:
-            - apm
+            - elasticnet
         depends_on:
           - elasticsearch
           - kibana
@@ -25,7 +25,7 @@ services:
             - http.host=0.0.0.0
             - transport.host=127.0.0.1
         networks:
-            - apm
+            - elasticnet
         ports:
             - "9200:9200"
     kibana:
@@ -35,12 +35,23 @@ services:
         ports:
           - "5601:5601"
         networks:
-            - apm
+            - elasticnet
         environment:
             - ELASTICSEARCH_URL=http://elasticsearch:9200
         depends_on:
           - elasticsearch
+          
+  heartbeat:
+    image: docker.elastic.co/beats/heartbeat:7.0.1
+    command: --strict.perms=false
+    environment:
+      - setup.kibana.host=kibana:5601
+      - output.elasticsearch.hosts=["elasticsearch:9200"]
+    # volumes:
+    #   - ${PWD}/configs/heartbeat.docker.yml:/usr/share/heartbeat/heartbeat.yml
+    networks:
+      - elastic
 
 networks:
-  apm:
+  elasticnet:
     driver: bridge
