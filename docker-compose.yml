@@ -1,4 +1,5 @@
 version: '3'
+
 services:
     beat:
         image: docker.elastic.co/apm/apm-server:7.0.1
@@ -14,7 +15,8 @@ services:
         depends_on:
           - elasticsearch
           - kibana
-    elasticsearch:
+   
+   elasticsearch:
         image: docker.elastic.co/elasticsearch/elasticsearch:7.0.1
         # network_mode: "service:elasticsearch"
         # volumes:
@@ -28,6 +30,7 @@ services:
             - elasticnet
         ports:
             - "9200:9200"
+    
     kibana:
         image: docker.elastic.co/kibana/kibana:7.0.1
         # volumes:
