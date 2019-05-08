@@ -11,7 +11,7 @@ services:
         #    - apmdata:/usr/share/apm-server
         #    - ./apm-server.yml:/usr/share/apm-server/apm-server.yml
         networks:
-            - apm
+            - kelha
         depends_on:
           - elasticsearch
           - kibana
@@ -28,7 +28,7 @@ services:
             - http.host=0.0.0.0
             - transport.host=127.0.0.1
         networks:
-            - apm
+            - kelha
         ports:
             - "9200:9200"
     kibana:
@@ -38,14 +38,14 @@ services:
         ports:
           - "5601:5601"
         networks:
-            - apm
+            - kelha
         environment:
             - ELASTICSEARCH_URL=http://elasticsearch:9200
         depends_on:
           - elasticsearch
 
 networks:
-  apm:
+  kelha:
     driver: bridge
     
 volumes:
