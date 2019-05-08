@@ -3,14 +3,14 @@ services:
     beat:
         image: docker.elastic.co/apm/apm-server:7.0.1
         ports:
-            - "8200:8200"
-            - "8201:8200"
+          - "8200:8200"
+          - "8201:8200"
         environment:
-            - apm-server.host=0.0.0.0
+          - apm-server.host=0.0.0.0
         #volumes:
         #    - ./apm-server.yml:/usr/share/apm-server/apm-server.yml
         networks:
-            - kelha
+          - kelha
         depends_on:
           - elasticsearch
           - kibana
@@ -19,16 +19,16 @@ services:
         # volumes:
         #     - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
         volumes:
-            - ./elasticdata:/usr/share/elasticsearch/data
+          - ./elasticdata:/usr/share/elasticsearch/data
         environment:
-            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-            - discovery.type=single-node
-            - http.host=0.0.0.0
-            - transport.host=127.0.0.1
+          - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+          - discovery.type=single-node
+          - http.host=0.0.0.0
+          - transport.host=127.0.0.1
         networks:
-            - kelha
+          - kelha
         ports:
-            - "9200:9200"
+          - "9200:9200"
     kibana:
         image: docker.elastic.co/kibana/kibana:7.0.1
         # volumes:
@@ -36,9 +36,9 @@ services:
         ports:
           - "5601:5601"
         networks:
-            - kelha
+          - kelha
         environment:
-            - ELASTICSEARCH_URL=http://elasticsearch:9200
+          - ELASTICSEARCH_URL=http://elasticsearch:9200
         depends_on:
           - elasticsearch
 
@@ -47,8 +47,18 @@ services:
         # volumes:
         #     - ./heartbeat.yml:/usr/share/heartbeat/config/heartbeat.yml
         networks:
-            - kelha
+          - kelha
         depends_on:
+          - elasticsearch
+          - kibana
+
+logstash:
+    image: docker.elastic.co/logstash/logstash:7.0.1
+    #volumes:
+    #  - ./config/logstash/logstash.conf/:/usr/share/logstash/pipeline/logstash.conf
+    networks:
+          - kelha
+    depends_on:
           - elasticsearch
           - kibana
 
