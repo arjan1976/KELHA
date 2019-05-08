@@ -49,3 +49,4 @@ networks:
     
 volumes:
   elasticdata:
+     driver: local
