@@ -7,9 +7,9 @@ services:
             - "8201:8200"
         environment:
             - apm-server.host=0.0.0.0
-        volumes:
-            - apmdata:/usr/share/apm-server
-            - ./apm-server.yml:/usr/share/apm-server/apm-server.yml
+        #volumes:
+        #    - apmdata:/usr/share/apm-server
+        #    - ./apm-server.yml:/usr/share/apm-server/apm-server.yml
         networks:
             - apm
         depends_on:
