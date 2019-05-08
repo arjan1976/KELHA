@@ -52,15 +52,15 @@ services:
           - elasticsearch
           - kibana
 
-logstash:
-    image: docker.elastic.co/logstash/logstash:7.0.1
-    #volumes:
-    #  - ./config/logstash/logstash.conf/:/usr/share/logstash/pipeline/logstash.conf
-    networks:
-          - kelha
-    depends_on:
-          - elasticsearch
-          - kibana
+    logstash:
+       image: docker.elastic.co/logstash/logstash:7.0.1
+       #volumes:
+       #  - ./config/logstash/logstash.conf/:/usr/share/logstash/pipeline/logstash.conf
+       networks:
+         - kelha
+       depends_on:
+         - elasticsearch
+         - kibana
 
 networks:
   kelha:
