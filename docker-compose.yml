@@ -50,6 +50,4 @@ networks:
     
 volumes:
   elasticdata:
-     driver: local
   apmdata:
-     driver: local
