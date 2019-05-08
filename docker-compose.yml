@@ -42,6 +42,16 @@ services:
         depends_on:
           - elasticsearch
 
+    heartbeat:
+        image: docker.elastic.co/heartbeat/heartbeat:7.0.1
+        # volumes:
+        #     - ./heartbeat.yml:/usr/share/heartbeat/config/heartbeat.yml
+        networks:
+            - kelha
+        depends_on:
+          - elasticsearch
+          - kibana
+
 networks:
   kelha:
     driver: bridge
