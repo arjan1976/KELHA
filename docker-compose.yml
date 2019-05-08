@@ -43,7 +43,7 @@ services:
           - elasticsearch
 
     heartbeat:
-        image: docker.elastic.co/heartbeat/heartbeat:7.0.1
+        image: docker.elastic.co/beats/heartbeat:7.0.1
         # volumes:
         #     - ./heartbeat.yml:/usr/share/heartbeat/config/heartbeat.yml
         networks:
