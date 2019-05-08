@@ -7,7 +7,9 @@ services:
             - "8201:8200"
         environment:
             - apm-server.host=0.0.0.0
+            - APMDATA: /usr/share/apm-server
         volumes:
+            - apmdata:/usr/share/apm-server
             - ./apm-server.yml:/usr/share/apm-server/apm-server.yml
         networks:
             - apm
@@ -49,4 +51,6 @@ networks:
     
 volumes:
   elasticdata:
+     driver: local
+  apmdata:
      driver: local
