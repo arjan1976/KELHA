@@ -1,24 +1,30 @@
-heartbeat.monitors
+heartbeat.monitors:
 - type: http
+  schedule: '@every 60s'
+  urls:
+    - http://localhost:9200
+    - http://localhost:5601
+    - http://www.smartshore.nl
+    - http://www.ability.nl
+    - https://nu.nl
 
-    # A bunch of URLs for heatbeat to monitor
-    urls: ["https://www.google.com"]
-    
-    # Specify the schedule
-    schedule: '@every 60s'
-    name: "URL Shipper"
-    
-    
-heartbeat.scheduler:
-  limit: 10
-  
-setup.kibana:
-  host: "localhost:5601"
-  
-setup.dashboards.enable: true
+- type: tcp
+  schedule: '@every 5s'
+  hosts:
+    - elasticsearch:9200
+    - kibana:5601
 
-logging.selectors: ["*"]
+- type: icmp
+  schedule: '@every 5s'
+  hosts:
+    - elasticsearch
+    - kibana
 
 output.elasticsearch:
-  hosts: ["http://elasticsearch:9200"]
-  index: "heartbeat-%{[beat.version]}-%{+yyyy.MM.dd}"
+  hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
+  username: '${ELASTICSEARCH_USERNAME:}'
+  password: '${ELASTICSEARCH_PASSWORD:}'
+
+setup.kibana.host: "http://kibana:5601"
+setup.dashboards.always_kibana: true
+setup.dashboards.retry.enabled: true
