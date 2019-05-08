@@ -44,8 +44,8 @@ services:
 
     heartbeat:
         image: docker.elastic.co/beats/heartbeat:7.0.1
-        # volumes:
-        #     - ./heartbeat.yml:/usr/share/heartbeat/config/heartbeat.yml
+        volumes:
+          - ./heartbeat.yml:/usr/share/heartbeat/config/heartbeat.yml
         networks:
           - kelha
         depends_on:
