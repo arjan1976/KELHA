@@ -19,6 +19,8 @@ services:
         # network_mode: "service:elasticsearch"
         # volumes:
         #     - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+        volumes:
+            - esdata:/usr/share/elasticsearch/data
         environment:
             - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
             - discovery.type=single-node
@@ -44,3 +46,6 @@ services:
 networks:
   apm:
     driver: bridge
+    
+volumes:
+  elasticdata:
