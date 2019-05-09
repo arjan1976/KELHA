@@ -53,14 +53,18 @@ services:
           - kibana
 
     logstash:
-       image: docker.elastic.co/logstash/logstash:7.0.1
-       #volumes:
-       #  - ./config/logstash/logstash.conf/:/usr/share/logstash/pipeline/logstash.conf
-       networks:
-         - kelha
-       depends_on:
-         - elasticsearch
-         - kibana
+        image: docker.elastic.co/logstash/logstash:7.0.1
+        #volumes:
+        #  - ./config/logstash/logstash.conf/:/usr/share/logstash/pipeline/logstash.conf
+        environment:
+          - LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+        ports:
+          - "5000:5000"
+          - "9600:9600"
+        networks:
+          - kelha
+        depends_on:
+          - elasticsearch
 
 networks:
   kelha:
