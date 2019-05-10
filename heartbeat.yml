@@ -2,8 +2,6 @@ heartbeat.monitors:
 - type: http
   schedule: '@every 60s'
   urls:
-    - http://localhost:9200
-    - http://localhost:5601
     - http://www.smartshore.nl
     - http://www.ability.nl
     - https://nu.nl
