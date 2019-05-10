@@ -55,8 +55,9 @@ services:
 
     logstash:
         image: docker.elastic.co/logstash/logstash:${VERSION}
-        #volumes:
-        #  - ./config/logstash/logstash.conf/:/usr/share/logstash/pipeline/logstash.conf
+        volumes:
+          - ./logstash.conf/:/usr/share/logstash/pipeline/logstash.conf
+        
         ports:
           - "5000:5000"
           - "9600:9600"
