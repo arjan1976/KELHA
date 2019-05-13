@@ -41,7 +41,6 @@ services:
           - ELASTICSEARCH_URL=http://elasticsearch:9200
         depends_on:
           - elasticsearch
-
     heartbeat:
         image: docker.elastic.co/beats/heartbeat:${VERSION}
         command: -e --strict.perms=false
@@ -52,21 +51,17 @@ services:
         depends_on:
           - elasticsearch
           - kibana
-
     logstash:
         image: docker.elastic.co/logstash/logstash:${VERSION}
         #volumes:
         #  - ./logstash/pipeline:/usr/share/logstash/pipeline:ro                    
         #- ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-
         ports:
-          - "5000:5000"
-          - "9600:9600"
+          - "5044:5044"
         networks:
           - kelha
         depends_on:
           - elasticsearch
-
 networks:
   kelha:
     driver: bridge
