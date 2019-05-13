@@ -53,7 +53,7 @@ services:
           - kibana
     logstash:
         image: docker.elastic.co/logstash/logstash:${VERSION}
-        volumes:
+        #volumes:
         #  - ./logstash/pipeline:/usr/share/logstash/pipeline:ro                    
         #- ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
         ports:
