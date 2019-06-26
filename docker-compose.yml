@@ -1,6 +1,6 @@
 version: '3'
 services:
-    beat:
+    #beat:
         #image: docker.elastic.co/apm/apm-server:${VERSION}
         #ports:
         #  - "8200:8200"
