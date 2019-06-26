@@ -45,7 +45,7 @@ elasticsearch.host: http://136.144.222.106:9200
 # * A FQDN: http://example.com
 # * Shortname defined via /etc/hosts: http://app-search.search
 #
-#app_search.external_url: http://localhost:3002
+app_search.external_url: http://136.144.222.106:3002
 #
 # Web application listen_host and listen_port.
 # Your application will run on this host and port.
@@ -53,7 +53,7 @@ elasticsearch.host: http://136.144.222.106:9200
 # * app_search.listen_host: Must be a valid IPv4 or IPv6 address.
 # * app_search.listen_port: Must be a valid port number (1-65535).
 #
-#app_search.listen_host: 127.0.0.1
+app_search.listen_host: 0.0.0.0
 #app_search.listen_port: 3002
 #
 # Background worker monitoring.
