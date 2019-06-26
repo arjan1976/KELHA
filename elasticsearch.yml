@@ -87,3 +87,9 @@ network.host: 0.0.0.0
 #
 #action.destructive_requires_name: true
 action.auto_create_index: ".app-search-*-logs-*,-.app-search-*,+*"
+
+
+xpack.notification.slack:
+  account: arjan@smartshore.nl
+    monitoring:
+      url: https://hooks.slack.com/services/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
