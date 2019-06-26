@@ -1,19 +1,5 @@
 version: '3'
 services:
-    #beat:
-        #image: docker.elastic.co/apm/apm-server:${VERSION}
-        #ports:
-        #  - "8200:8200"
-        #  - "8201:8200"
-        #environment:
-        #  - apm-server.host=0.0.0.0
-        #volumes:
-        #    - ./apm-server.yml:/usr/share/apm-server/apm-server.yml
-        #networks:
-        #  - kelha
-        #depends_on:
-        #  - elasticsearch
-        #  - kibana
     elasticsearch:
         image: docker.elastic.co/elasticsearch/elasticsearch:${VERSION}
         volumes:
@@ -57,17 +43,6 @@ services:
         #- ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
         ports:
           - "5044:5044"
-        networks:
-          - kelha
-        depends_on:
-          - elasticsearch
-
-    app-search:
-        image: docker.elastic.co/app-search/app-search:${VERSION}
-        volumes:
-          - ./app-search.yml:/usr/share/app-search/app-search.yml:ro
-        ports:
-          - "3002:3002"
         networks:
           - kelha
         depends_on:

@@ -4,4 +4,5 @@ Kibana
 Elastic
 Logstash
 Heartbeat
-APM
+
+(APM Removed)
