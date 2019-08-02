@@ -7,13 +7,13 @@ heartbeat.monitors:
     - https://nu.nl
 
 - type: tcp
-  schedule: '@every 5s'
+  schedule: '@every 120s'
   hosts:
     - elasticsearch:9200
     - kibana:5601
 
 - type: icmp
-  schedule: '@every 5s'
+  schedule: '@every 120s'
   hosts:
     - elasticsearch
     - kibana
