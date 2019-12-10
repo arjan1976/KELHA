@@ -14,13 +14,13 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: KELHA-Cluster
+cluster.name: KELHA-Clustername-Arjan
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-node.name: KELHA-node-1
+node.name: KELHA-nodename-1
 #
 # Add custom attributes to the node:
 #

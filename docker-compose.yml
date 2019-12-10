@@ -6,7 +6,7 @@ services:
              - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
              - ./elasticdata:/usr/share/elasticsearch/data
         environment:
-          - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+          - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
           - discovery.type=single-node
           - http.host=0.0.0.0
           - transport.host=127.0.0.1
@@ -36,17 +36,17 @@ services:
         depends_on:
           - elasticsearch
           - kibana
-    logstash:
-        image: docker.elastic.co/logstash/logstash:${VERSION}
+    #logstash:
+        #image: docker.elastic.co/logstash/logstash:${VERSION}
         #volumes:
         #  - ./logstash/pipeline:/usr/share/logstash/pipeline:ro                    
         #- ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-        ports:
-          - "5044:5044"
-        networks:
-          - kelha
-        depends_on:
-          - elasticsearch
+        #ports:
+        #  - "5044:5044"
+        #networks:
+        #  - kelha
+        #depends_on:
+        #  - elasticsearch
 
 networks:
   kelha:
