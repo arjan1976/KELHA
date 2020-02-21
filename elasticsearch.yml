@@ -14,13 +14,13 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: KELHA-Clustername-Arjan
+cluster.name: KELHA-Clustername-Elastic1
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-node.name: KELHA-nodename-1
+node.name: KELHA-Nodename-Node1
 #
 # Add custom attributes to the node:
 #
@@ -87,9 +87,3 @@ network.host: 0.0.0.0
 #
 #action.destructive_requires_name: true
 action.auto_create_index: ".app-search-*-logs-*,-.app-search-*,+*"
-
-
-#xpack.notification.slack:
-#  account: arjan@smartshore.nl
-#    monitoring:
-#      url: https://hooks.slack.com/services/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
